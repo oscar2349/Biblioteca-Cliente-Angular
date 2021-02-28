@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Personas</title>
+
+<!-- Bootstrap CSS -->
+<link href="../static/css/bootstrap.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+	<div class="container">
+		<br>
+		<h2>Agregar Persona</h2>
+		<form action="#" th:action="@{/home/save}" th:object="${libro}"
+			method="post">
+			<div class="form-group">
+				<label for="nombre">titulo</label> <input type="text"
+					class="form-control" id="titulo" th:field="*{titulo}" name="titulo">
+			</div>
+			<input type="hidden" th:field="*{idLibro}" name="idLibro"
+				id="idLibro">
+			<div class="form-group">
+				<label for="nombre">year</label> <input type="text"
+					class="form-control" id="year" th:field="*{year}" name="year">
+			</div>
+
+			<div class="form-group">
+				<label for="nombre">genero</label> <input type="text"
+					class="form-control" id="genero" th:field="*{genero}" name="genero">
+			</div>
+
+			<div class="form-group">
+				<label for="nombre">numeroPaginas</label> <input type="text"
+					class="form-control" id="numeroPaginas" th:field="*{numeroPaginas}"
+					name="numeroPaginas">
+			</div>
+
+			<div>
+				<label class="form-group col-sm-2">Autores</label> 
+				<select class="form-select col-sm-3" th:type="text" name="autores" value="">
+					<option th:each="autor : ${autores}" th:value="${autor.idAutores}"
+						th:text="${autor.nombreCompleto}"></option>
+				</select>
+			</div>
+
+			<div>
+				<label class="form-group col-sm-2">Editoriales</label> 
+				<select	class="col-sm-3" th:type="text" name="editoriales" value="">
+					<option th:each="editorial : ${editoriales}"
+						th:value="${editorial.idEditoriales}"
+						th:text="${editorial.nombre}"></option>
+				</select>
+			</div>
+			<button type="submit" class="btn btn-success">Guardar</button>
+		</form>
+	</div>
+</body>
+</html>
